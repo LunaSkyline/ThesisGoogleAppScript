@@ -1,0 +1,59 @@
+function createThesisTemplate() {
+  var doc = DocumentApp.getActiveDocument();
+  var body = doc.getBody();
+  
+  // Clear any existing content
+  body.clear();
+
+  // Title Page
+  body.appendParagraph("[Thesis Title]").setHeading(DocumentApp.ParagraphHeading.HEADING1).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("[Your Name]").setHeading(DocumentApp.ParagraphHeading.HEADING2).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("[Institution Name]").setHeading(DocumentApp.ParagraphHeading.HEADING2).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("[Department Name]").setHeading(DocumentApp.ParagraphHeading.HEADING2).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("[Course Name]").setHeading(DocumentApp.ParagraphHeading.HEADING2).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("[Date]").setHeading(DocumentApp.ParagraphHeading.HEADING2).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+
+  // Insert page break
+  body.appendPageBreak();
+
+  // Table of Contents
+  body.appendParagraph("Table of Contents").setHeading(DocumentApp.ParagraphHeading.HEADING1).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("[Automatically generated when headings are updated]").setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  
+  // Insert page break
+  body.appendPageBreak();
+
+  // Chapter 1: Introduction
+  addChapter(body, "Chapter 1: Introduction", ["Background of the Study", "Research Problem", "Research Objectives", "Significance of the Study", "Scope and Delimitations", "Definition of Terms"]);
+
+  // Chapter 2: Literature Review
+  addChapter(body, "Chapter 2: Literature Review", ["Overview", "Theoretical Framework", "Related Studies"]);
+
+  // Chapter 3: Methodology
+  addChapter(body, "Chapter 3: Methodology", ["Research Design", "Participants", "Data Collection", "Data Analysis"]);
+
+  // Chapter 4: Results and Discussion
+  addChapter(body, "Chapter 4: Results and Discussion", ["Presentation of Results", "Analysis", "Discussion"]);
+
+  // Chapter 5: Conclusion
+  addChapter(body, "Chapter 5: Conclusion", ["Summary of Findings", "Recommendations", "Future Research"]);
+
+  // Figures and Tables
+  body.appendPageBreak();
+  body.appendParagraph("Figures and Tables").setHeading(DocumentApp.ParagraphHeading.HEADING1).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("Placeholder for images or tables").setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  
+  // References
+  body.appendPageBreak();
+  body.appendParagraph("References").setHeading(DocumentApp.ParagraphHeading.HEADING1).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  body.appendParagraph("Placeholder for references in APA 7th edition format").setAlignment(DocumentApp.HorizontalAlignment.LEFT);
+}
+
+function addChapter(body, chapterTitle, sections) {
+  body.appendPageBreak();
+  body.appendParagraph(chapterTitle).setHeading(DocumentApp.ParagraphHeading.HEADING1).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.LEFT);
+  sections.forEach(function(section) {
+    body.appendParagraph(section).setHeading(DocumentApp.ParagraphHeading.HEADING2).setBold(true).setAlignment(DocumentApp.HorizontalAlignment.LEFT);
+    body.appendParagraph("[Placeholder text]").setAlignment(DocumentApp.HorizontalAlignment.LEFT);
+  });
+}
