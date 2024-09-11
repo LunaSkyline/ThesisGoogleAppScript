@@ -1,0 +1,46 @@
+function createThesisTemplate() {
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+
+  // Clear any existing sheets
+  // Overview Sheet
+  var overviewSheet = spreadsheet.insertSheet('Overview');
+  overviewSheet.appendRow(['Thesis Title', 'Your Thesis Title Here']);
+  overviewSheet.appendRow(['Advisor', 'Advisor Name']);
+  overviewSheet.appendRow(['Department', 'Your Department']);
+  overviewSheet.appendRow(['Institution', 'Your Institution']);
+  overviewSheet.appendRow(['Start Date', 'YYYY-MM-DD']);
+  overviewSheet.appendRow(['End Date', 'YYYY-MM-DD']);
+  overviewSheet.appendRow(['Status', 'In Progress']);
+  overviewSheet.setColumnWidths(1, 2, 200);
+
+  // Literature Review Sheet
+  var litReviewSheet = spreadsheet.insertSheet('Literature Review');
+  litReviewSheet.appendRow(['Source Title', 'Author', 'Publication Date', 'Journal/Publisher', 'Summary/Notes', 'URL']);
+  litReviewSheet.setColumnWidths(1, 6, 200);
+
+  // Data Collection Sheet
+  var dataSheet = spreadsheet.insertSheet('Data Collection');
+  dataSheet.appendRow(['ID', 'Date Collected', 'Data Point 1', 'Data Point 2', 'Data Point 3', 'Notes']);
+  dataSheet.setColumnWidths(1, 6, 150);
+
+  // Analysis Sheet
+  var analysisSheet = spreadsheet.insertSheet('Analysis');
+  analysisSheet.appendRow(['Analysis Task', 'Description', 'Formula/Calculation', 'Results']);
+  analysisSheet.setColumnWidths(1, 4, 200);
+
+  // Task Management Sheet
+  var taskSheet = spreadsheet.insertSheet('Task Management');
+  taskSheet.appendRow(['Task', 'Description', 'Assigned To', 'Start Date', 'Due Date', 'Status', 'Priority']);
+  taskSheet.setColumnWidths(1, 7, 150);
+
+  // References Sheet
+  var referencesSheet = spreadsheet.insertSheet('References');
+  referencesSheet.appendRow(['Author', 'Year', 'Title', 'Journal/Publisher', 'Volume', 'Pages', 'DOI/URL']);
+  referencesSheet.setColumnWidths(1, 7, 200);
+
+  // Set first sheet as active
+  spreadsheet.setActiveSheet(overviewSheet);
+
+  // Confirmation message
+  SpreadsheetApp.getUi().alert('Thesis template has been created successfully!');
+}
